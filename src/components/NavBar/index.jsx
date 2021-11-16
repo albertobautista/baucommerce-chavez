@@ -1,4 +1,6 @@
 import React from 'react'
+import CartWidget from '../CartWidget'
+
 const NavBar = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -58,9 +60,7 @@ const NavBar = () => {
                             </ul>
                         </li>
                     </ul>
-                    <button class="btn btn-dark border border-white" onClick={() => alert("Login")}>
-                        Login
-                    </button>
+                    <CartWidget />
                 </div>
             </div>
         </nav>
