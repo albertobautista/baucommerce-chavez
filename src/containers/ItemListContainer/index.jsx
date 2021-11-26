@@ -20,29 +20,25 @@ const ItemListContainer = ({greeting}) => {
     
     const getProducts = () => {
         const url = 'https://gorest.co.in/public/v1/posts'
-        setTimeout(() => {
             setLoadingItems(true)
-            //Only simulate api call
             fetch(url).then(res => res.json())
             .then(response => setItems(productsItems))
             .catch(error => console.log('Error: ', error))
-            
-        }, 2000);
-        setLoadingItems(false)
-    }
+            .finally(setLoadingItems(false))
+                }
 
     useEffect(() => {
         getProducts()
 
     }, [])
     return (
-        <div>
-            <h1>{greeting}</h1>
+        <div style={{marginTop:"80px"}}>
+            <h1  className="text-center">{greeting}</h1>
             {/* <ItemCount stock={5}
                 initial={1}
                 onAdd={onAdd}/> */}
             {
-                loadingItems ? <ItemList items={items}/> : <Loader/>
+                !loadingItems ? <ItemList items={items}/> : <Loader/>
             }
         </div>
     )
