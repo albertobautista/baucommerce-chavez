@@ -1,4 +1,5 @@
 import React from 'react'
+import Loader from '../Loader';
 import './styles.css'
 
 const ItemDetail = ({item}) => {
@@ -62,7 +63,7 @@ const ItemDetail = ({item}) => {
                 </div>
             </div>
         </div>
-    ) : null)
+    ) : <Loader/>)
 }
 
 export default ItemDetail
