@@ -1,13 +1,16 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './style.css'
 
 const Item = ({item}) => {
     const {
+        id,
         title,
         description,
         price,
         pictureUrl,
-        stock
+        stock,
+        category
     } = item
     return (
         <div className="ibox">
@@ -28,8 +31,9 @@ const Item = ({item}) => {
                     <div className="big mt-3 m-t-xs">
                       Stock: {stock}
                     </div>
+                    {category}
                     <div className="mt-3 text-right" align="center">
-                        <a href="#" className="btn btn-xs btn-outline btn-primary">Ver Detalles</a>
+                        <Link to={`/item/${id}`} className="btn btn-xs btn-outline btn-primary">Ver Detalles</Link>
                     </div>
                 </div>
             </div>
