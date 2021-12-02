@@ -53,7 +53,7 @@ const productsItems = [
       description:
         "Diabetes with neurological manifestations, type II or unspecified type, not stated as uncontrolled",
       price: "$1369.04",
-      stock: 78,
+      stock: 10,
       pictureUrl: "http://dummyimage.com/700x700.png/5fa2dd/ffffff",
       category: 3,
     },

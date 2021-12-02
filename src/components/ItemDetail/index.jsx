@@ -1,4 +1,6 @@
-import React from 'react'
+import React, {useState} from 'react'
+import {Link} from 'react-router-dom';
+import ItemCount from '../ItemCount';
 import Loader from '../Loader';
 import './styles.css'
 
@@ -7,8 +9,24 @@ const ItemDetail = ({item}) => {
         title,
         description,
         price,
-        pictureUrl
+        pictureUrl,
+        stock
     } = item;
+
+    const [readyToPay, setReadyToPay] = useState(false)
+    const [quantityToAdd, setQuantityToAdd] = useState(null)
+
+
+    const onAdd = (quantity) => {
+        if (quantity === 0) {
+            alert("Debes ingresar al menos un producto")
+        } else {
+            alert(`Has ingresado ${quantity} productos`)
+            setReadyToPay(true)
+            setQuantityToAdd(quantity)
+        }
+    }
+
     return(Object.keys(item).length !== 0 ? (
         <div className="container">
             <div className="product-content product-wrap clearfix product-deatil">
@@ -53,11 +71,18 @@ const ItemDetail = ({item}) => {
                         <div className="description description-tabs">
                             <p>{description}</p>
                         </div>
-                        <hr/>
-                        <div className="row">
+                        <hr/>      
+                        <div className="row mt-1">
                             <div className="col-sm-12 col-md-6 col-lg-6">
-                                <a href="javascript:void(0);" className="btn btn-success btn-md">Añadir al carrito</a>
-                            </div>
+                                {
+                                !readyToPay ? (
+                                    <ItemCount stock={stock}
+                                        initial={1}
+                                        onAdd={onAdd}/>
+                                ) : (
+                                    <Link to="/cart" className="btn btn-xs btn-outline-success ">Terminar compra</Link>
+                                )
+                            } </div>
                         </div>
                     </div>
                 </div>
