@@ -1,9 +1,25 @@
-import React from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import { NavLink } from 'react-router-dom'
+import { CartContext } from '../../context/CartContext'
 import CartWidget from '../CartWidget'
 import Menu from '../Menu'
 
 const NavBar = () => {
+    const {cartItems} = useContext(CartContext);
+    const [cartCount, setCartCount] = useState(0)
+
+    const getTotalItems = () => {
+        const total = cartItems.reduce((total, current) => {
+            return total + current.quantity
+        },0)
+
+        setCartCount(total)
+    }
+
+    useEffect(() => {
+        getTotalItems()
+    },[cartItems])
+
     return (
         <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
             <div className="container-fluid">
@@ -13,7 +29,7 @@ const NavBar = () => {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <Menu/>
-                    <CartWidget />
+                    <CartWidget cartCount={cartCount} />
                 </div>
             </div>
         </nav>

@@ -1,15 +1,16 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import "./styles.css"
 
-const CartWidget = () => {
+const CartWidget = ({cartCount}) => {
     return (
         <div class="cart-container">
-            <button type="button" class="btn-dark position-relative">
+            <Link type="button" class="btn-dark position-relative" to="/cart">
                 <i className="bi bi-cart cart-style"></i>
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                    2
+                    {cartCount}
                 </span>
-            </button>
+            </Link>
         </div>
     )
 }
