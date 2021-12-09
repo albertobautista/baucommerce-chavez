@@ -6,18 +6,16 @@ import Loader from '../Loader';
 import './styles.css'
 
 const ItemDetail = ({item}) => {
-    const {addItem} = useContext(CartContext)
+    const {isInCart, addItem} = useContext(CartContext)
 
     const {
+        id,
         title,
         description,
         price,
         pictureUrl,
         stock
     } = item;
-
-    const [readyToPay, setReadyToPay] = useState(false);
-
 
     const onAdd = (quantity) => {
         if (quantity !== 0) {
@@ -26,7 +24,6 @@ const ItemDetail = ({item}) => {
                 quantity
             };
             alert(`Has ingresado ${quantity} productos`)
-            setReadyToPay(true)
             addItem(itemToAdd)
         } else {
             alert("Debes ingresar al menos un producto")
@@ -78,9 +75,12 @@ const ItemDetail = ({item}) => {
                     <hr/>
                     <div className="row mt-1">
                         <div className="col-sm-12 col-md-6 col-lg-6"> {
-                            !readyToPay ? (<ItemCount stock={stock}
-                                initial={1}
-                                onAdd={onAdd}/>) : (<Link to="/cart" className="btn btn-xs btn-outline-success ">Terminar compra</Link>)
+                            !isInCart(id) 
+                                ? 
+                                    (<ItemCount stock={stock}
+                                    initial={1}
+                                    onAdd={onAdd}/>) 
+                                :   (<Link to="/cart" className="btn btn-xs btn-outline-success ">Terminar compra</Link>)
                         } </div>
                     </div>
                 </div>
