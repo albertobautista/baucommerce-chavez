@@ -3,11 +3,11 @@ import Cart from '../../components/Cart'
 import { CartContext } from '../../context/CartContext'
 
 const CartContainer = () => {
-    const {cartItems, cleanCart, removeItem} = useContext(CartContext);
+    const {cartItems, cleanCart, removeItem, cartTotalPrice} = useContext(CartContext);
 
     return (
         <div style={{marginTop:"80px"}}>          
-            <Cart cartItems={cartItems} cleanCart={cleanCart} removeItem={removeItem} />
+            <Cart cartItems={cartItems} cleanCart={cleanCart} removeItem={removeItem} cartTotalPrice={cartTotalPrice} />
         </div>
     )
 }

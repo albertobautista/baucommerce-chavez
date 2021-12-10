@@ -20,7 +20,7 @@ const Item = ({item}) => {
                 </div>
                 <div className="product-desc">
                     <span className="product-price">
-                        {price}
+                        ${price}
                     </span>
                     {/* <small className="text-muted">Category</small> */}
                     <h1 href="#" className="product-name"> {title}</h1>

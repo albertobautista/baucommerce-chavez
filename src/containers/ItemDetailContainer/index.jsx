@@ -3,6 +3,8 @@ import {useParams} from 'react-router-dom';
 import ItemDetail from '../../components/ItemDetail'
 import Loader from '../../components/Loader';
 import productsItems from '../ItemListContainer/data';
+import {doc, getDoc} from "firebase/firestore/lite"
+import {db} from "../../firebase/config"
 
 
 const ItemDetailContainer = () => {
@@ -30,18 +32,30 @@ const ItemDetailContainer = () => {
         setItem(filteredItem);
     }
 
-    useEffect(() => {
-        getItem()
+    useEffect(() => { // getItem()
+        setLoadingItem(true)
+        console.log("DOC", id)
+
+        const docRef = doc(db, "products", id);
+        getDoc(docRef).then(response => {
+            console.log("DOC", response.data())
+            const newItem = {
+                id:response.id,
+                ...response.data()
+            }
+            setItem(newItem)
+        }).finally(() => {
+            setLoadingItem(false)
+
+        })
+
 
     }, [id])
-    return (
-        <div style={
-            {marginTop: "80px"}
-        }>
-            {
-            !loadingItem ? <ItemDetail item={item}/> : <Loader/>
-        } </div>
-    )
+    return (<div style={
+        {marginTop: "80px"}
+    }> {
+        !loadingItem ? <ItemDetail item={item}/> : <Loader/>
+    } </div>)
 }
 
 export default ItemDetailContainer
