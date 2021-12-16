@@ -95,9 +95,9 @@ const Cart = ({cartItems, cleanCart, removeItem, cartTotalPrice}) => {
                                 </dd>
                             </dl>
                             <hr/>
-                            <button className="btn btn-out btn-success btn-square btn-main">
+                            <Link to="/checkout" className="btn btn-out btn-success btn-square btn-main">
                                 Terminar Compra
-                            </button>
+                            </Link>
                             <button onClick={
                                     () => cleanCart()
                                 }

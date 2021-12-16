@@ -4,6 +4,7 @@ import NavBar from "./components/NavBar";
 import ItemDetailContainer from "./containers/ItemDetailContainer";
 import CartContainer from "./containers/CartContainer";
 import CartContextProvider from "./context/CartContext"
+import Checkout from "./components/Checkout";
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
           </Route>
           <Route path="/item/:id"><ItemDetailContainer /></Route>
           <Route path="/cart"><CartContainer /></Route>
+          <Route path="/checkout"><Checkout/></Route>
+
         </Switch>        
       </Router>
     </CartContextProvider>
