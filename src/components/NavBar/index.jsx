@@ -31,6 +31,9 @@ const NavBar = () => {
                     <Menu/>
                     <CartWidget cartCount={cartCount} />
                 </div>
+                <button className="btn btn-primary m-2">Login</button>
+                <button className="btn btn-warning">SignUp</button>
+
             </div>
         </nav>
     )
