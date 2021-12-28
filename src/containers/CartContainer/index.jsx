@@ -6,7 +6,7 @@ const CartContainer = () => {
     const {cartItems, cleanCart, removeItem, cartTotalPrice} = useContext(CartContext);
 
     return (
-        <div style={{marginTop:"80px"}}>          
+        <div className="mt-5">          
             <Cart cartItems={cartItems} cleanCart={cleanCart} removeItem={removeItem} cartTotalPrice={cartTotalPrice} />
         </div>
     )

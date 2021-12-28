@@ -17,6 +17,8 @@ import {CartContext} from '../../context/CartContext'
 import {db} from '../../firebase/config';
 import useForm from '../../hooks/useForm';
 import * as Yup from "yup";
+import { Redirect } from 'react-router-dom';
+import Cart from '../Cart';
 
 const initialValues = {
     nombre:"",
@@ -28,7 +30,7 @@ const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2
 const schema = Yup.object().shape({
     nombre: Yup.string().min(5, "Muy corto").max(10, "Muy largo").required("Es requerido"),
     email: Yup.string().email('Invalid email').required("Es requerido"),
-    phone: Yup.string().matches(phoneRegExp, 'Phone number is not valid'),
+    phone: Yup.string().matches(phoneRegExp, 'Phone number is not valid').required("Es requerido"),
 
 
 })
@@ -87,93 +89,62 @@ const Checkout = () => {
                 //LOADIN
             }
         })
-        // cartItems.forEach(element => {
-        //     const docRef = doc(productosRef, element.id)
-        //     console.log("DOC 2", element.quantity)
-
-        //     getDoc(docRef)
-        //         .then(doc =>{
-        //             console.log("DOC ", doc.data().stock)
-        //             console.log("DOC 2", element.quantity)
-
-        //             updateDoc(docRef,{
-        //                 stock: doc.data().stock - element.quantity
-        //             })
-        //         })
-        // });
-        // addDoc(ordersRef, order).then(response => {
-        //     console.log("Pedido creado", response)
-        //     console.log("Pedido creado", response.id)
-        //     setOrderID(response.id)
-        //     cleanCart()
-        // })
-
     }
+    if(!orderID && cartItems.length <= 0){
+        return <Redirect to="/"/>
+    }
+
     return (
-        <div style={
-            {marginTop: "80px"}
-        }>
+        <div className='container mt-5'>
             {
             orderID ? (
                 <h2>Tu compra fue registrada: {orderID}</h2>
             ) : (
-                <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={schema}>
-                    {(formik)=>(
-                        <form onSubmit={formik.handleSubmit}>
-                            <Field name="nombre"  className='form-control my-2'/>
-                            {/* <input onChange={formik.handleChange}
-                                value={formik.values.nombre}
-                                type="text"
-                                className='form-control my-2'
-                                placeholder='Nombre:'
-                                name="nombre"/> */}
-                                {formik.errors.nombre && <p>{formik.errors.nombre}</p>}
+                <>
+                    <h1 className='text-center'>Checkout</h1>
+                    <div className="row d-flex align-items-center justify-content-center">
+                        
+                        <div className="col-md-6">
+                        <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={schema}>
+                        {(formik)=>(
+                            <form onSubmit={formik.handleSubmit}>
+                                <Field name="nombre" className='form-control my-2' placeholder="Nombre..."/>
+                                {/* <input onChange={formik.handleChange}
+                                    value={formik.values.nombre}
+                                    type="text"
+                                    className='form-control my-2'
+                                    placeholder='Nombre:'
+                                    name="nombre"/> */}
+                                    {formik.errors.nombre && <p className='alert alert-danger'>{formik.errors.nombre}</p>}
 
-                            <input onChange={formik.handleChange}
-                                value={formik.values.email}
+                                <input onChange={formik.handleChange}
+                                    value={formik.values.email}
 
-                                type="email"
-                                className='form-control my-2'
-                                placeholder='Correo:'
-                                name="email"/>
-                                {formik.errors.email && <p>{formik.errors.email}</p>}
+                                    type="email"
+                                    className='form-control my-2'
+                                    placeholder='Correo:'
+                                    name="email"/>
+                                    {formik.errors.email && <p className='alert alert-danger'>{formik.errors.email}</p>}
 
 
-                            <input onChange={formik.handleChange}
-                                value={formik.values.phone}
+                                <input onChange={formik.handleChange}
+                                    value={formik.values.phone}
 
-                                type="tel"
-                                className='form-control my-2'
-                                placeholder='Telefono:'
-                                name="phone"/>
-                                {formik.errors.phone && <p>{formik.errors.phone}</p>}
+                                    type="tel"
+                                    className='form-control my-2'
+                                    placeholder='Telefono:'
+                                    name="phone"/>
+                                    {formik.errors.phone && <p className='alert alert-danger'>{formik.errors.phone}</p>}
 
-                            <button type="submit">Comprar</button>
+                                <button className='btn btn-success' type="submit">Comprar</button>
 
-                        </form>
-                    )}
-                </Formik>
-                // <form onSubmit={handleSubmit}>
-                //     <input onChange={handleChange}
-                //         type="text"
-                //         className='form-control my-2'
-                //         placeholder='Nombre:'
-                //         name="name"/>
-
-                //     <input onChange={handleChange}
-                //         type="email"
-                //         className='form-control my-2'
-                //         placeholder='Correo:'
-                //         name="email"/>
-
-                //     <input onChange={handleChange}
-                //         type="tel"
-                //         className='form-control my-2'
-                //         placeholder='Telefono:'
-                //         name="phone"/>
-                //     <button type="submit">Comprar</button>
-
-                // </form>
+                            </form>
+                        )}
+                    </Formik>
+                        </div>
+                    
+                    </div>
+                </>
             )
         } </div>
     )

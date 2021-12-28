@@ -11,7 +11,7 @@ const CartContextProvider = ({children}) => {
 
 
     const addItem = (item) => {
-        if (! isInCart(item.id)) 
+        if (!isInCart(item.id)) 
             setCartItems([
                 ...cartItems,
                 item

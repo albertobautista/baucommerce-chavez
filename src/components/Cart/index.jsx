@@ -1,5 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import { currencyFormat } from '../../utils'
+import NoData from '../NoData'
 import "./styles.css"
 
 const Cart = ({cartItems, cleanCart, removeItem, cartTotalPrice}) => {
@@ -57,15 +59,15 @@ const Cart = ({cartItems, cleanCart, removeItem, cartTotalPrice}) => {
                                             </td>
                                             <td>
                                                 <div className="price-wrap ">
-                                                    <var className="price">${
-                                                        cartItem.price
+                                                    <var className="price">{
+                                                        currencyFormat(cartItem.price)
                                                     }</var>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div className="price-wrap ">
-                                                    <var className="price">${
-                                                        cartItem.price * cartItem.quantity
+                                                    <var className="price">{
+                                                        currencyFormat(cartItem.price * cartItem.quantity)
                                                     }</var>
                                                 </div>
                                             </td>
@@ -88,10 +90,10 @@ const Cart = ({cartItems, cleanCart, removeItem, cartTotalPrice}) => {
                     <div className="card">
                         <div className="card-body">
                             <dl className="dlist-align">
-                                <dt>Total:</dt>
+                                <dt>Total: </dt>
                                 <dd className="text-right text-dark b ml-3">
                                     <strong>
-                                        $ {cartTotalPrice}</strong>
+                                         {currencyFormat(cartTotalPrice)}</strong>
                                 </dd>
                             </dl>
                             <hr/>
@@ -108,7 +110,7 @@ const Cart = ({cartItems, cleanCart, removeItem, cartTotalPrice}) => {
                 </aside>
             </div>
         </div>
-    ) : "NO hay"
+    ) : <NoData message="Carrito vacío"/>
 
 }
 

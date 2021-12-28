@@ -1,23 +1,23 @@
 const menuItems = [
     {
         id:1,
-        name:'Tecnología',
+        name:'Jerseys',
     },
     {
         id:2,
-        name:'Ropa',
+        name:'Jeans',
     },
     {
         id:3,
-        name:'Juguetes',
+        name:'Entretenimiento',
     },
     {
         id:4,
-        name:'Línea Blanca',
+        name:'Pantallas',
     },
     {
         id:5,
-        name:'Cocina',
+        name:'Oficina',
     }
 ];
 export default menuItems;

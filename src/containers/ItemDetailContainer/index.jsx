@@ -20,9 +20,7 @@ const ItemDetailContainer = () => {
         getProductDetail()
     }, [id])
     return (
-        <div style={
-            {marginTop: "80px"}
-        }>
+        <div>
             {
             !loadingItem ? <ItemDetail item={item}/> : <Loader/>
         } </div>

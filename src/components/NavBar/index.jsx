@@ -21,7 +21,7 @@ const NavBar = () => {
     },[cartItems])
 
     return (
-        <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container-fluid">
                 <NavLink className="navbar-brand" to="/">Bau-commerce</NavLink>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,8 +31,8 @@ const NavBar = () => {
                     <Menu/>
                     <CartWidget cartCount={cartCount} />
                 </div>
-                <button className="btn btn-primary m-2">Login</button>
-                <button className="btn btn-warning">SignUp</button>
+                {/* <button className="btn btn-primary m-2">Login</button>
+                <button className="btn btn-warning">SignUp</button> */}
 
             </div>
         </nav>

@@ -5,7 +5,7 @@ import Loader from '../../components/Loader';
 import {getProducts} from './services';
 
 
-const ItemListContainer = ({greeting}) => {
+const ItemListContainer = () => {
 
     const {categoryId} = useParams();
 
@@ -23,11 +23,7 @@ const ItemListContainer = ({greeting}) => {
     }, [categoryId])
 
     return (
-        <div style={
-            {marginTop: "80px"}
-        }>
-            <h1 className="text-center">
-                {greeting}</h1>
+        <div className="mt-5">
             {
             !loading ? <ItemList items={items}/> : <Loader/>
         } </div>

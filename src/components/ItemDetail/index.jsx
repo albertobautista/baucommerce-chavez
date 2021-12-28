@@ -1,6 +1,7 @@
-import React, {useState, useContext} from 'react'
+import React, {useContext} from 'react'
 import {Link} from 'react-router-dom';
 import {CartContext} from "../../context/CartContext"
+import { currencyFormat } from '../../utils';
 import ItemCount from '../ItemCount';
 import Loader from '../Loader';
 import './styles.css'
@@ -66,15 +67,15 @@ const ItemDetail = ({item}) => {
                     <h2 className="name"> {title} </h2>
                     <hr/>
                     <h3 className="price-container">
-                        Precio: ${price} </h3>
+                        Precio: {currencyFormat(price)} </h3>
 
                     <hr/>
                     <div className="description description-tabs">
-                        <p> {description}</p>
+                        <p style={{fontSize:"20px"}}> {description}</p>
                     </div>
                     <hr/>
                     <div className="row mt-1">
-                        <div className="col-sm-12 col-md-6 col-lg-6"> {
+                        <div className="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center"> {
                             !isInCart(id) 
                                 ? 
                                     (<ItemCount stock={stock}

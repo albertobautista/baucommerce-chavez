@@ -7,7 +7,7 @@ const Menu = () => {
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             {menuItems.map(item => (
                 <li key={item.id} className="nav-item">
-                    <NavLink className="nav-link" to={`/category/${item.id}`}>{item.name}</NavLink>
+                    <NavLink className="nav-link" to={`/category/${item.name.toLowerCase()}`}>{item.name}</NavLink>
                 </li>
             ))}     
     </ul>
