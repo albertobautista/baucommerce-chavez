@@ -4,11 +4,11 @@ import {CartContext} from "../../context/CartContext"
 import { currencyFormat } from '../../utils';
 import ItemCount from '../ItemCount';
 import Loader from '../Loader';
+import NoData from '../NoData';
 import './styles.css'
 
 const ItemDetail = ({item}) => {
     const {isInCart, addItem} = useContext(CartContext)
-
     const {
         id,
         title,
@@ -17,7 +17,6 @@ const ItemDetail = ({item}) => {
         pictureUrl,
         stock
     } = item;
-
     const onAdd = (quantity) => {
         if (quantity !== 0) {
             const itemToAdd = {
@@ -31,7 +30,9 @@ const ItemDetail = ({item}) => {
         }
     }
 
-    return(Object.keys(item).length !== 0 ? (<div className="container">
+    return(Object.keys(item).length !== 0 ? (
+    title ? (
+    <div className="container">
         <div className="product-content product-wrap clearfix product-deatil">
             <div className="row">
                 <div className="col-md-5 col-sm-12 col-xs-12">
@@ -87,7 +88,9 @@ const ItemDetail = ({item}) => {
                 </div>
             </div>
         </div>
-    </div>) : <Loader/>)
+    </div>)
+    : <NoData message="Este producto no existe"/>
+    ) : <Loader/>)
 }
 
 export default ItemDetail

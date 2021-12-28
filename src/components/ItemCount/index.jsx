@@ -24,7 +24,7 @@ const ItemCount = ({stock, initial, onAdd}) => {
                             className="minus text-left">-</button>
                     </div>
                     <div className="col" align="center">
-                        <input type="number" className="input-text qty text"
+                        <input type="number" className="input-text qty text" defaultValue={counter}
                             value={counter}/>
 
                     </div>

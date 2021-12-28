@@ -13,7 +13,7 @@ const ItemDetailContainer = () => {
 
     const getProductDetail = () => {
         setLoadingItem(true)
-        getProduct(id).then(resp => setItem(resp)).catch(() => {}).finally(() => setLoadingItem(false))
+        getProduct(id).then(resp => setItem(resp)).catch((error) => {console.log("Error getProductDetail:", error)}).finally(() => setLoadingItem(false))
     }
 
     useEffect(() => {

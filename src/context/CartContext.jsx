@@ -36,9 +36,7 @@ const CartContextProvider = ({children}) => {
 
     const getTotalPrice = () => {
         const subtotalPrice = getSubtotal()
-        console.log("ITEEEEEMS", subtotalPrice)
         const total = subtotalPrice.reduce((total, cartItem) => total + cartItem.subtotal, 0);
-        console.log("ITEEEEEMS2", total)
 
         setCartTotalPrice(total)
     }

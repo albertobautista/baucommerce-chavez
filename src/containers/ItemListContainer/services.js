@@ -11,6 +11,6 @@ export const getProducts = async(categoryId) => {
             ...doc.data()
         }))
     }).catch(error => {
-        console.log("ERROR: ", error)
+        console.log("ERROR getDocs: ", error)
     }).finally(() => {})
 }

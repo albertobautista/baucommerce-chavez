@@ -7,7 +7,7 @@ export const getProduct = async (productId) => {
         id: doc.id,
         ...doc.data()
     })).catch((error) => {
-        console.log("Error:", error.message)
+        console.log("Error getProduct:", error.message)
     })
 
 
