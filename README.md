@@ -6,11 +6,29 @@ This web app is an e-commerce where yo can buy differents kinds of things.
 
 It has five five categories of things
 
-- Tecnología
-- Ropa
-- Juguetes
-- Línea Blanca
-- Cocina
+- Jerseys
+- Jeans
+- Entretenimiento
+- Pantallas
+- Oficina
+
+### Pages
+
+- #### Home
+
+    Shows all products
+
+- #### Item Detail
+
+    Shows item detail information
+
+- #### Cart
+
+    Shows all details of products to buy, quantity and prices and the customer can delete products of the cart o clean cart
+
+- #### Checkout
+
+    Shows all porducts detail and shows a form to fill the customer information
 
 ## Install and run
 
